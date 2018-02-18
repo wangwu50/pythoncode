@@ -1,4 +1,5 @@
-a = [1,2,3]
-a.append(2)
-print(a)
+import random
 
+for i in range(0, 100):
+    raa = random.randrange(1, 3)
+    print(raa)

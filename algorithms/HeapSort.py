@@ -4,10 +4,9 @@ class Heap(list):
         for n in nums:
             self.append(n)
         self.heap_size = len(self) - 1
-        build_max_heap(self)
 
     def __str__(self):
-        return self[1:self.heap_size].__str__()
+        return self[1:].__str__()
 
 
 def max_imum(A):
@@ -57,6 +56,20 @@ def exchange(A, i, j):
     A[i], A[j] = A[j], A[i]
 
 
+def min_heapify(A: Heap, i: int):
+    l = left(i)
+    r = right(i)
+    if l <= A.heap_size and A[l] < A[i]:
+        smallest = l
+    else:
+        smallest = i
+    if r <= A.heap_size and A[r] < A[smallest]:
+        smallest = r
+    if smallest != i:
+        exchange(A, i, smallest)
+        min_heapify(A, smallest)
+
+
 def max_heapify(A: Heap, i: int):
     l = left(i)
     r = right(i)
@@ -69,6 +82,12 @@ def max_heapify(A: Heap, i: int):
     if largest != i:
         exchange(A, i, largest)
         max_heapify(A, largest)
+
+
+def build_min_heap(A: Heap):
+    A.length = A.heap_size
+    for i in range(int(A.length / 2), 0, -1):
+        min_heapify(A, i)
 
 
 def build_max_heap(A: Heap):
@@ -86,7 +105,17 @@ def heap_sort(A: Heap):
         max_heapify(A, 1)
 
 
+def heap_sort2(A: Heap):
+    build_min_heap(A)
+    A.length = A.heap_size
+    for i in range(A.length, 1, -1):
+        exchange(A, 1, i)
+        A.heap_size = A.heap_size - 1
+        min_heapify(A, 1)
+
+
 if __name__ == '__main__':
     a = Heap(2, 5, 6, 0, -3, 4, 3, 1)
-    insert(a, 10)
+    print(a)
+    heap_sort2(a)
     print(a)
