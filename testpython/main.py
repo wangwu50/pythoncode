@@ -1,5 +1,7 @@
-import time
+import logging
 
-while True:
-    time.sleep(1)
-    print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "  hello world")
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG)
+    logging.debug("this is debug log")
+    logging.info("this is info log")
+    logging.error("this is error log")

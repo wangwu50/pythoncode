@@ -7,7 +7,8 @@ dict = {}
 if os.path.exists(docker_config):
     with open(docker_config, 'r') as f:
         dict = json.load(f)
-dict['live-restore'] = True
+dict['userland-proxy'] = False
+dict['init'] = True
 with open(docker_config, 'w') as f:
     json.dump(dict, f, sort_keys=True, indent=4, separators=(',', ':'))
 
