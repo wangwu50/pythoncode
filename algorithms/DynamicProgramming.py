@@ -57,6 +57,14 @@ def extended_bottom_up_cut_rod(p, n):
     return r, s
 
 
+def fib(n):
+    a, b = 0, 1
+    while n >= 0:
+        a, b = b, a + b
+        n = n - 1
+    return a
+
+
 # 100个台阶，每次可以走一步或者两步，问共有多少种走法
 # s[100] = s[99]+s[98]
 #
@@ -95,3 +103,5 @@ if __name__ == '__main__':
     print(i)
     j = bottom_up_find_step(100)
     print(j)
+    k = fib(100)
+    print(k)
